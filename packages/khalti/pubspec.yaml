@@ -14,5 +14,9 @@ dependencies:
     sdk: flutter
   device_info_plus:
   http:
-#  khalti_core: ^1.0.1
+  khalti_core:
+    git:
+      url: https://github.com/queendevelopers/khalti-flutter-sdk.git
+      branch: unsound-null-safety
+      path: packages/khalti_core
   package_info_plus:

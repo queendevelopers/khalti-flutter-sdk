@@ -1,5 +1,6 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
+import 'package:flutter/foundation.dart';
 import 'package:khalti_core/src/platform/platform.dart';
 
 /// The configuration class for Khalti Payment Gateway.

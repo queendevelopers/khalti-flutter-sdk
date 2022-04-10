@@ -7,7 +7,7 @@ import 'package:khalti_core/src/core/http_client/khalti_client.dart';
 /// The base request model for [KhaltiClient].
 abstract class KhaltiRequestModel {
   /// The map representation of the [KhaltiRequestModel].
-  Map<String, Object?> toMap();
+  Map<String, Object> toMap();
 
   /// The JSON representation of the [KhaltiRequestModel].
   ///

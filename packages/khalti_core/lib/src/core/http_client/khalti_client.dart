@@ -14,5 +14,5 @@ abstract class KhaltiClient {
   ///
   /// [url] is the full URL for the API.
   /// [data] is the body to be sent with the request.
-  Future<HttpResponse> post(String url, Map<String, Object?> data);
+  Future<HttpResponse> post(String url, Map<String, Object> data);
 }

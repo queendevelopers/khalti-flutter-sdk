@@ -1,5 +1,6 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
+import 'package:flutter/foundation.dart';
 import 'package:khalti_core/khalti_core.dart';
 import 'package:khalti_core/src/config/url.dart';
 
@@ -14,15 +15,15 @@ class KhaltiService {
 
   /// Enabling [enableDebugging] will print network logs.
   static bool enableDebugging = false;
-  static String? _publicKey;
+  static String _publicKey;
 
   /// The [publicKey] configured using [KhaltiService.publicKey].
   static String get publicKey {
     assert(
-      _publicKey != null && _publicKey!.isNotEmpty,
+      _publicKey != null && _publicKey.isNotEmpty,
       'Provide a public key using "KhaltiService.publicKey = <khalti-pk>;"',
     );
-    return _publicKey!;
+    return _publicKey;
   }
 
   static set publicKey(String key) => _publicKey = key;
@@ -113,7 +114,7 @@ class KhaltiService {
   /// [returnUrl] is the redirection url after successful payment.
   /// The redirected URL will be in the following format.
   /// ```
-  /// <returnUrl>/?<data>
+  /// <returnUrl>/<data>
   /// ```
   ///
   /// An [additionalData] to be sent alongside the payment configuration.
@@ -128,8 +129,8 @@ class KhaltiService {
     @required String productName,
     @required PaymentType paymentType,
     @required String returnUrl,
-    String? productUrl,
-    Map<String, Object>? additionalData,
+    String productUrl,
+    Map<String, Object> additionalData,
   }) {
     final params = {
       'bank': bankId,
@@ -140,7 +141,7 @@ class KhaltiService {
       'product_name': productName,
       'source': 'custom',
       ...config.raw,
-      if (productUrl != null) 'product_url': productUrl,
+      if (productUrl = null) 'product_url': productUrl,
       if (additionalData != null) ...additionalData.map(_stringifyValue),
       'return_url': returnUrl,
       'payment_type': paymentType.value,
@@ -175,7 +176,7 @@ class _Logger {
   final String method;
   final String url;
 
-  void request(Object? data) {
+  void request(Object data) {
     _divider();
     _logHeading();
     _log(

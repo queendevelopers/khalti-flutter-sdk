@@ -1,5 +1,6 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
+import 'package:flutter/foundation.dart';
 import 'package:khalti_core/src/helper/model_helpers.dart';
 
 /// The class representing a Bank.
@@ -29,7 +30,7 @@ class BankModel {
   final String shortName;
 
   /// Factory to create [BankModel] instance from [map].
-  factory BankModel.fromMap(Map<String, Object?> map) {
+  factory BankModel.fromMap(Map<String, Object> map) {
     return BankModel(
       idx: map.getString('idx'),
       logo: map.getString('logo'),
@@ -87,13 +88,13 @@ class BankListModel {
   final int totalRecords;
 
   /// The next page url.
-  final String? next;
+  final String next;
 
   /// The previous page url.
-  final String? previous;
+  final String previous;
 
   /// Factory to create [BankListModel] instance from [map].
-  factory BankListModel.fromMap(Map<String, Object?> map) {
+  factory BankListModel.fromMap(Map<String, Object> map) {
     final rawBanks = map['records'] ?? [];
     return BankListModel(
       banks: rawBanks is Iterable

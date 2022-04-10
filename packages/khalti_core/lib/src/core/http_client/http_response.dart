@@ -1,5 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
+import 'package:flutter/foundation.dart';
+
 import 'khalti_client.dart';
 
 /// The response for [KhaltiClient].
@@ -7,13 +9,13 @@ class HttpResponse {
   const HttpResponse._({this.data, this.statusCode, this.message});
 
   /// The [data] received.
-  final Object? data;
+  final Object data;
 
   /// The [statusCode] of response.
-  final int? statusCode;
+  final int statusCode;
 
   /// The error [message].
-  final String? message;
+  final String message;
 
   /// Factory for [SuccessHttpResponse].
   factory HttpResponse.success({
@@ -32,7 +34,7 @@ class HttpResponse {
     @required String message,
     @required int code,
     @required StackTrace stackTrace,
-    Object? detail,
+    Object detail,
     bool isSocketException,
   }) = ExceptionHttpResponse._;
 }
@@ -72,7 +74,7 @@ class ExceptionHttpResponse extends HttpResponse {
   final StackTrace stackTrace;
 
   /// The exception detail
-  final Object? detail;
+  final Object detail;
 
   /// Defines whether the exception is socket exception or not.
   final bool isSocketException;

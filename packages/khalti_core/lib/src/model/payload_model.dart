@@ -1,5 +1,6 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
+import 'package:flutter/foundation.dart';
 import 'package:khalti_core/src/core/khalti_request_model.dart';
 import 'package:khalti_core/src/data/khalti_service.dart';
 import 'package:khalti_core/src/helper/model_helpers.dart';
@@ -18,11 +19,11 @@ class _PayloadModel extends KhaltiRequestModel {
   final String mobile;
   final String productIdentity;
   final String productName;
-  final String? productUrl;
-  final Map<String, Object?>? additionalData;
+  final String productUrl;
+  final Map<String, Object> additionalData;
 
   @override
-  Map<String, Object?> toMap() {
+  Map<String, Object> toMap() {
     return {
       'amount': amount.toString(),
       'mobile': mobile,
@@ -30,11 +31,11 @@ class _PayloadModel extends KhaltiRequestModel {
       'product_name': productName,
       'public_key': KhaltiService.publicKey,
       if (productUrl != null) 'product_url': productUrl,
-      if (additionalData != null) ...additionalData!.map(_addMerchantPrefix),
+      if (additionalData != null) ...additionalData.map(_addMerchantPrefix),
     };
   }
 
-  MapEntry<String, Object?> _addMerchantPrefix(String key, Object? value) {
+  MapEntry<String, Object> _addMerchantPrefix(String key, Object value) {
     return MapEntry('merchant_$key', value);
   }
 }
@@ -48,8 +49,8 @@ class PaymentInitiationRequestModel extends _PayloadModel {
     @required String productIdentity,
     @required String productName,
     @required this.transactionPin,
-    String? productUrl,
-    Map<String, Object>? additionalData,
+    String productUrl,
+    Map<String, Object> additionalData,
   }) : super(
           amount: amount,
           mobile: mobile,
@@ -63,7 +64,7 @@ class PaymentInitiationRequestModel extends _PayloadModel {
   final String transactionPin;
 
   @override
-  Map<String, Object?> toMap() {
+  Map<String, Object> toMap() {
     return {
       ...super.toMap(),
       'transaction_pin': transactionPin,
@@ -95,7 +96,7 @@ class PaymentInitiationResponseModel {
   final String pinCreatedMessage;
 
   /// Factory to create [PaymentInitiationResponseModel] instance from [map].
-  factory PaymentInitiationResponseModel.fromMap(Map<String, Object?> map) {
+  factory PaymentInitiationResponseModel.fromMap(Map<String, Object> map) {
     return PaymentInitiationResponseModel(
       token: map.getString('token'),
       pinCreated: map.getBool('pin_created'),
@@ -130,7 +131,7 @@ class PaymentConfirmationRequestModel extends KhaltiRequestModel {
   final String transactionPin;
 
   @override
-  Map<String, Object?> toMap() {
+  Map<String, Object> toMap() {
     return {
       'confirmation_code': confirmationCode,
       'public_key': KhaltiService.publicKey,
@@ -182,13 +183,13 @@ class PaymentSuccessModel {
   final String token;
 
   /// The product URL.
-  final String? productUrl;
+  final String productUrl;
 
   /// An [additionalData] sent alongside the payment configuration.
-  final Map<String, Object?>? additionalData;
+  final Map<String, Object> additionalData;
 
   /// Factory to create [PaymentSuccessModel] instance from [map].
-  factory PaymentSuccessModel.fromMap(Map<String, Object?> map) {
+  factory PaymentSuccessModel.fromMap(Map<String, Object> map) {
     return PaymentSuccessModel(
       idx: map.getString('idx'),
       amount: map.getInt('amount'),

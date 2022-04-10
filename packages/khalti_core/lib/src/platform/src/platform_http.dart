@@ -43,7 +43,7 @@ abstract class HttpException implements Exception {
   final String message;
 
   /// The location [uri] of the error.
-  final Uri? uri;
+  final Uri uri;
 }
 
 /// Exception thrown when a socket operation fails.
@@ -63,14 +63,14 @@ abstract class SocketException implements Exception {
   /// The underlying OS error.
   ///
   /// If this exception is not thrown due to an OS error, the value is `null`.
-  final OSError? osError;
+  final OSError osError;
 
   /// The port of the socket giving rise to the exception.
   ///
   /// This is either the source or destination address of a socket,
   /// or it can be `null` if no socket end-point was involved in the cause of
   /// the exception.
-  final int? port;
+  final int port;
 }
 
 /// The OS Error.
