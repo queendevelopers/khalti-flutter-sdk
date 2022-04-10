@@ -2,7 +2,8 @@
 
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:khalti_flutter/src/helper/assets.dart';
 
 import 'image.dart';
@@ -57,8 +58,9 @@ class _KhaltiProgressIndicatorState extends State<KhaltiProgressIndicator>
         builder: (context, _) {
           return CustomPaint(
             painter: _ProgressPainter(fraction: _animation.value),
-            child: SizedBox.square(
-              dimension: widget.size - 16 * 2,
+            child: SizedBox(
+              height: widget.size - 16 * 2,
+              width: widget.size - 16 * 2,
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Center(

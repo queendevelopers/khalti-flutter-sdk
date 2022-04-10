@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:khalti_flutter/src/widget/image.dart';
 
 /// The widget which shows bank's logo and name.
@@ -25,11 +26,12 @@ class KhaltiBankTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: SizedBox.square(
-        dimension: 32,
+      leading: SizedBox(
+        height: 32,
+        width: 32,
         child: KhaltiImage.network(url: logoUrl),
       ),
-      minLeadingWidth: 0,
+      // minLeadingWidth: 0,
       title: Text(
         name,
         style: Theme.of(context).textTheme.bodyText2,

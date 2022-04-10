@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:flutter/services.dart';
 import 'package:khalti/khalti.dart';
 import 'package:khalti_flutter/localization/khalti_localizations.dart';
@@ -150,7 +151,7 @@ class _MainPage extends StatelessWidget {
       appBarTheme: AppBarTheme(
         elevation: 0,
         color: colorScheme.background,
-        foregroundColor: colorScheme.onPrimary,
+        // foregroundColor: colorScheme.onPrimary,
         iconTheme: IconThemeData(color: khaltiColor.surface.shade400),
       ),
       tabBarTheme: TabBarTheme(

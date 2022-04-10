@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
@@ -42,7 +43,7 @@ class _MobileFieldState extends State<MobileField> {
       readOnly: _config.mobileReadOnly ?? false,
       validator: Validators(context).mobile,
       decoration: InputDecoration(
-        label: Text(context.loc.khaltiMobileNumber),
+        labelText: context.loc.khaltiMobileNumber,
         prefixIcon: const Icon(Icons.perm_identity),
         counterText: '',
       ),
@@ -74,8 +75,8 @@ class PINField extends StatelessWidget {
     return TextFormField(
       validator: Validators(context).pin,
       decoration: InputDecoration(
-        label: Text(context.loc.khaltiMPIN),
-        prefixIcon: const Icon(Icons.password),
+        labelText: context.loc.khaltiMPIN,
+        prefixIcon: const Icon(Icons.lock_outline),
       ),
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -102,8 +103,8 @@ class CodeField extends StatelessWidget {
     return TextFormField(
       validator: Validators(context).code,
       decoration: InputDecoration(
-        label: Text(context.loc.paymentCode),
-        prefixIcon: const Icon(Icons.password),
+        labelText: context.loc.paymentCode,
+        prefixIcon: const Icon(Icons.lock_outline),
       ),
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],

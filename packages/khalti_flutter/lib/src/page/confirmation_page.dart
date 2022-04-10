@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:khalti/khalti.dart';
 import 'package:khalti_flutter/localization/khalti_localizations.dart';
 import 'package:khalti_flutter/src/helper/error_info.dart';
@@ -79,7 +80,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
         final response = await Khalti.service.confirmPayment(
           request: PaymentConfirmationRequestModel(
             transactionPin: widget.mPin,
-            confirmationCode: _code!,
+            confirmationCode: _code,
             token: widget.token,
           ),
         );

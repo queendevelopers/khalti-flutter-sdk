@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:khalti_flutter/src/widget/color.dart';
 
@@ -81,10 +82,11 @@ class _NetworkImage extends KhaltiImage {
         if (chunkEvent == null) return child;
 
         return Center(
-          child: SizedBox.square(
-            dimension: 20,
+          child: SizedBox(
+            height: 20,
+            width: 20,
             child: CircularProgressIndicator(
-              color: khaltiColor.surface[10],
+              // color: khaltiColor.surface[10],
               backgroundColor: khaltiColor.surface[5],
               strokeWidth: 2,
             ),

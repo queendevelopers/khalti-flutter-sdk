@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 
 /// The widget which constraints it's [child] depending upon the screen size.
 class ResponsiveBox extends StatelessWidget {

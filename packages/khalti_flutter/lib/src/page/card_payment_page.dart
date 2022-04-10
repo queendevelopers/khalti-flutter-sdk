@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:khalti/khalti.dart';
 import 'package:khalti_flutter/src/helper/assets.dart';
 import 'package:khalti_flutter/src/helper/payment_config_scope.dart';
@@ -56,7 +57,7 @@ class _CardPaymentPageState extends State<CardPaymentPage>
               onPressed: () async {
                 final url = Khalti.service.buildBankUrl(
                   bankId: widget.paymentType.value,
-                  mobile: _mobile!,
+                  mobile: _mobile,
                   amount: config.amount,
                   productIdentity: config.productIdentity,
                   productName: config.productName,

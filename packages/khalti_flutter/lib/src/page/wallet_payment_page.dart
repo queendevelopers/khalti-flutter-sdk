@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:khalti/khalti.dart';
 import 'package:khalti_flutter/localization/khalti_localizations.dart';
 import 'package:khalti_flutter/src/helper/assets.dart';
@@ -72,7 +73,7 @@ class _WalletPaymentPageState extends State<WalletPaymentPage>
                   return AnimatedSize(
                     duration: const Duration(milliseconds: 300),
                     child: remainingAttempts.isNegative
-                         Container(height: 1)
+                        ? Container(height: 1)
                         : Padding(
                             padding: const EdgeInsets.only(bottom: 32),
                             child: Text(

@@ -26,7 +26,7 @@ abstract class Khalti {
   /// [enabledDebugging] decides whether to show network logs or not.
   static Future<void> init({
     @required String publicKey,
-    KhaltiConfig? config,
+    KhaltiConfig config,
     bool enabledDebugging = false,
   }) async {
     KhaltiService.enableDebugging = enabledDebugging;

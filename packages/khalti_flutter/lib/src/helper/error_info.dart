@@ -1,6 +1,6 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
-
-import 'package:flutter/widgets.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart' hide required;
 import 'package:khalti/khalti.dart';
 import 'package:khalti_flutter/localization/khalti_localizations.dart';
 import 'package:khalti_flutter/src/helper/assets.dart';

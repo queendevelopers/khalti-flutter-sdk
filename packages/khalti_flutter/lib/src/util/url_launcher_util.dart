@@ -60,7 +60,8 @@ class UrlLauncherUtil {
         return launch(_khaltiAppStore);
       case TargetPlatform.linux:
       case TargetPlatform.macOS:
-      case TargetPlatform.windows: /* no-op */
+      case TargetPlatform.windows:
+      /* no-op */
     }
     return SynchronousFuture(false);
   }

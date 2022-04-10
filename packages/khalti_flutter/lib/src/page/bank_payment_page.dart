@@ -1,6 +1,7 @@
 // Copyright (c) 2021 The Khalti Authors. All rights reserved.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide required;
 import 'package:khalti/khalti.dart';
 import 'package:khalti_flutter/localization/khalti_localizations.dart';
 import 'package:khalti_flutter/src/helper/payment_config_scope.dart';
@@ -63,7 +64,7 @@ class _BankPaymentPageState extends State<BankPaymentPage>
         }
 
         if (snapshot.hasData) {
-          final banks = snapshot.data!.banks;
+          final banks = snapshot.data.banks;
 
           return Scaffold(
             body: Column(
@@ -87,7 +88,7 @@ class _BankPaymentPageState extends State<BankPaymentPage>
                       return AnimatedSwitcher(
                         duration: const Duration(milliseconds: 300),
                         child: filteredBanks.isEmpty
-                             KhaltiErrorWidget(
+                            ? KhaltiErrorWidget(
                                 error: const {},
                                 title: context.loc.noBanksFound,
                                 subtitle: context.loc.searchForAnotherKeyword,
@@ -239,8 +240,9 @@ class _BankBottomSheetState extends State<_BankBottomSheet> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox.square(
-                          dimension: 32,
+                        SizedBox(
+                          height: 32,
+                          width: 32,
                           child: KhaltiImage.network(url: widget.logo),
                         ),
                         const SizedBox(width: 16),
@@ -258,7 +260,7 @@ class _BankBottomSheetState extends State<_BankBottomSheet> {
                       amount: widget.amount,
                       onPressed: () {
                         if (_formKey.currentState.validate() ?? false) {
-                          widget.onTap(_khaltiMobileNumber!);
+                          widget.onTap(_khaltiMobileNumber);
                         }
                       },
                     ),
