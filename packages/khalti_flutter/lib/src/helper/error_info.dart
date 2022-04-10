@@ -8,17 +8,17 @@ import 'package:khalti_flutter/src/helper/assets.dart';
 /// The error information extracted from error object.
 class ErrorInfo {
   ErrorInfo._({
-    required this.primary,
-    required this.secondary,
-    required this.asset,
-    required this.data,
+    @required this.primary,
+    @required this.secondary,
+    @required this.asset,
+    @required this.data,
   });
 
   /// The [primary] error message.
   final String primary;
 
   /// The [secondary]; detailed error message.
-  final String? secondary;
+  final String secondary;
 
   /// The [asset] name associated with the error.
   final String asset;
@@ -30,8 +30,8 @@ class ErrorInfo {
   factory ErrorInfo.from(BuildContext context, Object error) {
     var assetName = a_generalError;
     var primary = context.loc.anErrorOccurred;
-    String? secondary;
-    Map<String, Object?> _data = {};
+    String secondary;
+    Map<String, Object> _data = {};
 
     if (error is FailureHttpResponse) {
       final errorData = error.data;

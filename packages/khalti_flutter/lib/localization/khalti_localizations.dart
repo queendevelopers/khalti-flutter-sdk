@@ -36,7 +36,7 @@ abstract class KhaltiLocalizations {
       loc != null,
       'Ensure to add KhaltiLocalizations.delegate in MaterialApp.localizationDelegates or CupertinoApp.localizationDelegates',
     );
-    return loc!;
+    return loc;
   }
 
   /// The delegate to provide [KhaltiLocalizations].
@@ -84,7 +84,7 @@ abstract class KhaltiLocalizations {
   /// Payment Code must be at least 6 characters
   String get payCodeMustBeMin6Chars;
 
-  /// This field is required
+  /// This field is @required
   String get fieldRequired;
 
   /// Please select your Bank

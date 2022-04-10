@@ -19,8 +19,8 @@ import 'widget/tab.dart';
 class PaymentPage extends StatelessWidget {
   /// Creates [PaymentPage] with the provided [config] and [preferences].
   PaymentPage({
-    Key? key,
-    required this.config,
+    Key key,
+    @required this.config,
     this.preferences = PaymentPreference.values,
   })  : assert(
           preferences.isNotEmpty,
@@ -81,7 +81,7 @@ class PaymentPage extends StatelessWidget {
 }
 
 class _MainPage extends StatelessWidget {
-  const _MainPage({Key? key, required this.preferences}) : super(key: key);
+  const _MainPage({Key key, @required this.preferences}) : super(key: key);
 
   final List<PaymentPreference> preferences;
 
@@ -226,7 +226,7 @@ class _MainPage extends StatelessWidget {
 }
 
 class _TabBarDelegate extends SliverPersistentHeaderDelegate {
-  const _TabBarDelegate({required this.tabBar});
+  const _TabBarDelegate({@required this.tabBar});
 
   final PreferredSizeWidget tabBar;
 

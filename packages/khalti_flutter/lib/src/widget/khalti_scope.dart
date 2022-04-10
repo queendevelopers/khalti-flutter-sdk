@@ -16,11 +16,11 @@ typedef KhaltiScopeBuilder = Widget Function(
 class KhaltiScope extends StatefulWidget {
   /// Creates [KhaltiScope] with the provided properties.
   KhaltiScope({
-    Key? key,
-    required this.publicKey,
-    required KhaltiScopeBuilder builder,
+    Key key,
+    @required this.publicKey,
+    @required KhaltiScopeBuilder builder,
     this.enabledDebugging = false,
-    GlobalKey<NavigatorState>? navigatorKey,
+    GlobalKey<NavigatorState> navigatorKey,
   })  : _navKey = navigatorKey ?? GlobalObjectKey(publicKey),
         _builder = builder,
         super(key: key);
@@ -40,18 +40,18 @@ class KhaltiScope extends StatefulWidget {
   /// Returns the [KhaltiScope] instance for the widget tree
   /// that corresponds to the given [context].
   static KhaltiScope of(BuildContext context) {
-    final _InheritedKhaltiScope? _scope =
+    final _InheritedKhaltiScope _scope =
         context.dependOnInheritedWidgetOfExactType();
     assert(_scope != null, 'KhaltiScope could not be found in context');
-    return _scope!.scope;
+    return _scope.scope;
   }
 
   /// Launches the Khalti Payment Gateway interface.
   Future<void> pay({
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
     List<PaymentPreference> preferences = PaymentPreference.values,
   }) async {
     final navigatorState = _navKey.currentState;
@@ -60,7 +60,7 @@ class KhaltiScope extends StatefulWidget {
       'Ensure that the navKey from KhaltiScope is provided to MaterialApp or CupertinoApp',
     );
 
-    final result = await navigatorState!.push(
+    final result = await navigatorState.push(
       MaterialPageRoute(
         builder: (_) => PaymentPage(config: config, preferences: preferences),
         settings: const RouteSettings(name: '/kpg'),
@@ -72,7 +72,7 @@ class KhaltiScope extends StatefulWidget {
     } else if (result is PaymentFailureModel) {
       onFailure(result);
     } else {
-      onCancel?.call();
+      onCancel.call();
     }
   }
 
@@ -88,7 +88,7 @@ class _KhaltiScopeState extends State<KhaltiScope> with WidgetsBindingObserver {
       publicKey: widget.publicKey,
       enabledDebugging: widget.enabledDebugging,
     );
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -97,7 +97,7 @@ class _KhaltiScopeState extends State<KhaltiScope> with WidgetsBindingObserver {
     final kpgPath = Platform.isIOS ? '/kpg' : '/kpg/';
     if (uri.path == kpgPath) {
       final navigatorState = widget._navKey.currentState;
-      navigatorState!.pop(
+      navigatorState.pop(
         PaymentSuccessModel.fromMap(uri.queryParameters),
       );
     }
@@ -106,7 +106,7 @@ class _KhaltiScopeState extends State<KhaltiScope> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    WidgetsBinding.instance?.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -121,15 +121,15 @@ class _KhaltiScopeState extends State<KhaltiScope> with WidgetsBindingObserver {
 
 class _InheritedKhaltiScope extends InheritedWidget {
   const _InheritedKhaltiScope({
-    Key? key,
-    required this.scope,
-    required Widget child,
+    Key key,
+    @required this.scope,
+    @required Widget child,
   }) : super(key: key, child: child);
 
   final KhaltiScope scope;
 
   @override
   bool updateShouldNotify(_InheritedKhaltiScope old) {
-    return old.scope.publicKey != scope.publicKey;
+    return old.scope.publicKey == scope.publicKey;
   }
 }

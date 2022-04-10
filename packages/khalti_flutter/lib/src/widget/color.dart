@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 class KhaltiColor extends InheritedWidget {
   /// Creates [KhaltiColor] with the provided values.
   const KhaltiColor({
-    Key? key,
-    required this.isDark,
-    required Widget child,
+    Key key,
+    @required this.isDark,
+    @required Widget child,
   }) : super(key: key, child: child);
 
   /// Whether it is dark mode or light mode.
@@ -19,8 +19,8 @@ class KhaltiColor extends InheritedWidget {
 
   /// Returns the [KhaltiColor] found in the [context].
   static KhaltiColor of(BuildContext context) {
-    final KhaltiColor? color = context.dependOnInheritedWidgetOfExactType();
-    return color!;
+    final KhaltiColor color = context.dependOnInheritedWidgetOfExactType();
+    return color;
   }
 
   @override

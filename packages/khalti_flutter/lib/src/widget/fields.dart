@@ -14,8 +14,8 @@ import 'color.dart';
 class MobileField extends StatefulWidget {
   /// Creates [MobileField].
   const MobileField({
-    Key? key,
-    required this.onChanged,
+    Key key,
+    @required this.onChanged,
   }) : super(key: key);
 
   /// Called when the mobile number changes.
@@ -29,8 +29,8 @@ class _MobileFieldState extends State<MobileField> {
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance!.addPostFrameCallback((_) {
-      final mobile = _config?.mobile;
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      final mobile = _config.mobile;
       if (mobile != null) widget.onChanged(mobile);
     });
   }
@@ -38,8 +38,8 @@ class _MobileFieldState extends State<MobileField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      initialValue: _config?.mobile,
-      readOnly: _config?.mobileReadOnly ?? false,
+      initialValue: _config.mobile,
+      readOnly: _config.mobileReadOnly ?? false,
       validator: Validators(context).mobile,
       decoration: InputDecoration(
         label: Text(context.loc.khaltiMobileNumber),
@@ -55,15 +55,15 @@ class _MobileFieldState extends State<MobileField> {
     );
   }
 
-  PaymentConfig? get _config => PaymentConfigScope.mayBeOf(context);
+  PaymentConfig get _config => PaymentConfigScope.mayBeOf(context);
 }
 
 /// The Khalti MPIN field.
 class PINField extends StatelessWidget {
   /// Creates [PINField].
   const PINField({
-    Key? key,
-    required this.onChanged,
+    Key key,
+    @required this.onChanged,
   }) : super(key: key);
 
   /// Called when the MPIN changes.
@@ -90,8 +90,8 @@ class PINField extends StatelessWidget {
 class CodeField extends StatelessWidget {
   /// Creates [CodeField].
   const CodeField({
-    Key? key,
-    required this.onChanged,
+    Key key,
+    @required this.onChanged,
   }) : super(key: key);
 
   /// Called when the payment code changes.
@@ -117,7 +117,7 @@ const double _searchFieldHeight = 40;
 /// The Search field.
 class SearchField extends StatelessWidget {
   /// Creates [SearchField].
-  const SearchField({Key? key, required this.controller}) : super(key: key);
+  const SearchField({Key key, @required this.controller}) : super(key: key);
 
   /// The text editing controller associated with the search field.
   final TextEditingController controller;
@@ -160,7 +160,7 @@ class SearchField extends StatelessWidget {
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 prefixIconConstraints: constraint,
                 suffixIconConstraints: constraint,
-                prefixIcon: prefixIcon!,
+                prefixIcon: prefixIcon,
                 suffixIcon: value.text.isEmpty
                     ? null
                     : IconButton(

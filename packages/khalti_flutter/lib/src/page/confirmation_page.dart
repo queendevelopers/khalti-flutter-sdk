@@ -12,10 +12,10 @@ import 'package:khalti_flutter/src/widget/responsive_box.dart';
 class ConfirmationPage extends StatefulWidget {
   /// Creates [ConfirmationPage] with the provided values.
   const ConfirmationPage({
-    Key? key,
-    required this.token,
-    required this.mobileNo,
-    required this.mPin,
+    Key key,
+    @required this.token,
+    @required this.mobileNo,
+    @required this.mPin,
   }) : super(key: key);
 
   /// The [token] received at payment initiation step.
@@ -33,7 +33,7 @@ class ConfirmationPage extends StatefulWidget {
 
 class _ConfirmationPageState extends State<ConfirmationPage> {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  String? _code;
+  String _code;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
   }
 
   Future<void> _confirmPayment() async {
-    if (_formKey.currentState?.validate() ?? false) {
+    if (_formKey.currentState.validate() ?? false) {
       showProgressDialog(
         context,
         message: context.loc.confirmingPayment,

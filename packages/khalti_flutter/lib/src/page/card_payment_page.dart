@@ -14,8 +14,8 @@ import 'package:khalti_flutter/src/widget/responsive_box.dart';
 class CardPaymentPage extends StatefulWidget {
   /// Creates [CardPaymentPage] with the provided [paymentType].
   const CardPaymentPage({
-    Key? key,
-    required this.paymentType,
+    Key key,
+    @required this.paymentType,
   }) : super(key: key);
 
   /// The [PaymentType].
@@ -27,7 +27,7 @@ class CardPaymentPage extends StatefulWidget {
 
 class _CardPaymentPageState extends State<CardPaymentPage>
     with AutomaticKeepAliveClientMixin {
-  String? _mobile;
+  String _mobile;
 
   @override
   Widget build(BuildContext context) {

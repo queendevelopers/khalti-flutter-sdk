@@ -8,14 +8,14 @@ import 'package:khalti/khalti.dart';
 class PaymentConfig {
   /// Creates [PaymentConfig] from the provided objects.
   PaymentConfig({
-    required this.amount,
-    required this.productIdentity,
-    required this.productName,
+    @required this.amount,
+    @required this.productIdentity,
+    @required this.productName,
     this.productUrl,
     this.additionalData,
     this.mobile,
     this.mobileReadOnly = false,
-    String? returnUrl,
+    String returnUrl,
   })  : _returnUrl = returnUrl,
         assert(
           mobile == null || RegExp(r'(^[9][678][0-9]{8}$)').hasMatch(mobile),
@@ -36,25 +36,25 @@ class PaymentConfig {
   final String productName;
 
   /// The product URL.
-  final String? productUrl;
+  final String productUrl;
 
   /// An [additionalData] sent alongside the payment configuration.
-  final Map<String, Object>? additionalData;
+  final Map<String, Object> additionalData;
 
   /// A [mobile] number to preset in Khalti Mobile Number field.
-  final String? mobile;
+  final String mobile;
 
   /// Makes the mobile field non-editable, if true.
   ///
   /// Default is false.
   final bool mobileReadOnly;
 
-  final String? _returnUrl;
+  final String _returnUrl;
 
   /// A redirection url after successful payment.
   /// The redirected URL will be in the following format.
   /// ```
-  /// <returnUrl>/?<data>
+  /// <returnUrl>/<data>
   /// ```
   ///
   /// By default, web platform will have the base url as the [returnUrl].
@@ -71,7 +71,7 @@ class PaymentConfig {
       }
       return 'kpg://${KhaltiService.config.packageName}/kpg';
     }
-    return _returnUrl!;
+    return _returnUrl;
   }
 
   @override

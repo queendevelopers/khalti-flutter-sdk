@@ -10,7 +10,7 @@ import 'image.dart';
 /// The progress indicator with Khalti Icon.
 class KhaltiProgressIndicator extends StatefulWidget {
   /// Creates [KhaltiProgressIndicator] with the provided [size].
-  const KhaltiProgressIndicator({Key? key, this.size = 80}) : super(key: key);
+  const KhaltiProgressIndicator({Key key, this.size = 80}) : super(key: key);
 
   /// The [size] of the indicator.
   final double size;
@@ -23,8 +23,8 @@ class KhaltiProgressIndicator extends StatefulWidget {
 
 class _KhaltiProgressIndicatorState extends State<KhaltiProgressIndicator>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation<double> _animation;
+  AnimationController _controller;
+  Animation<double> _animation;
 
   @override
   void initState() {
@@ -77,7 +77,7 @@ class _KhaltiProgressIndicatorState extends State<KhaltiProgressIndicator>
 }
 
 class _ProgressPainter extends CustomPainter {
-  _ProgressPainter({required this.fraction});
+  _ProgressPainter({@required this.fraction});
 
   final double fraction;
 

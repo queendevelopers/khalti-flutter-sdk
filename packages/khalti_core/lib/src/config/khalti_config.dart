@@ -27,12 +27,12 @@ class KhaltiConfig {
 
   /// Default constructor for the configuration.
   KhaltiConfig({
-    required this.platform,
-    required this.osVersion,
-    required this.deviceModel,
-    required this.deviceManufacturer,
-    required this.packageName,
-    required this.packageVersion,
+    @required this.platform,
+    @required this.osVersion,
+    @required this.deviceModel,
+    @required this.deviceManufacturer,
+    @required this.packageName,
+    @required this.packageVersion,
   });
 
   /// A factory constructor that only configures the [platform]

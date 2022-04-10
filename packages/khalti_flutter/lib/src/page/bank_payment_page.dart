@@ -18,8 +18,8 @@ import 'package:khalti_flutter/src/widget/responsive_box.dart';
 class BankPaymentPage extends StatefulWidget {
   /// Creates [BankPaymentPage] with the provided [paymentType].
   const BankPaymentPage({
-    Key? key,
-    required this.paymentType,
+    Key key,
+    @required this.paymentType,
   }) : super(key: key);
 
   /// The [PaymentType].
@@ -31,8 +31,8 @@ class BankPaymentPage extends StatefulWidget {
 
 class _BankPaymentPageState extends State<BankPaymentPage>
     with AutomaticKeepAliveClientMixin {
-  late final Future<BankListModel> banksFuture;
-  late final TextEditingController searchController;
+  Future<BankListModel> banksFuture;
+  TextEditingController searchController;
 
   @override
   void initState() {
@@ -59,7 +59,7 @@ class _BankPaymentPageState extends State<BankPaymentPage>
         }
 
         if (snapshot.hasError) {
-          return KhaltiErrorWidget(error: snapshot.error!);
+          return KhaltiErrorWidget(error: snapshot.error);
         }
 
         if (snapshot.hasData) {
@@ -87,7 +87,7 @@ class _BankPaymentPageState extends State<BankPaymentPage>
                       return AnimatedSwitcher(
                         duration: const Duration(milliseconds: 300),
                         child: filteredBanks.isEmpty
-                            ? KhaltiErrorWidget(
+                             KhaltiErrorWidget(
                                 error: const {},
                                 title: context.loc.noBanksFound,
                                 subtitle: context.loc.searchForAnotherKeyword,
@@ -129,9 +129,9 @@ class _BankPaymentPageState extends State<BankPaymentPage>
 
 class _BankTile extends StatelessWidget {
   const _BankTile({
-    Key? key,
-    required this.bank,
-    required this.paymentType,
+    Key key,
+    @required this.bank,
+    @required this.paymentType,
   }) : super(key: key);
 
   final BankModel bank;
@@ -186,11 +186,11 @@ class _BankTile extends StatelessWidget {
 
 class _BankBottomSheet extends StatefulWidget {
   const _BankBottomSheet({
-    Key? key,
-    required this.name,
-    required this.logo,
-    required this.amount,
-    required this.onTap,
+    Key key,
+    @required this.name,
+    @required this.logo,
+    @required this.amount,
+    @required this.onTap,
   }) : super(key: key);
 
   final String name;
@@ -205,12 +205,12 @@ class _BankBottomSheet extends StatefulWidget {
 class _BankBottomSheetState extends State<_BankBottomSheet> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
-  String? _khaltiMobileNumber;
+  String _khaltiMobileNumber;
 
   @override
   Widget build(BuildContext context) {
     final bottomMargin = 10 + MediaQuery.of(context).viewInsets.bottom;
-    final titleStyle = Theme.of(context).textTheme.headline6?.copyWith(
+    final titleStyle = Theme.of(context).textTheme.headline6.copyWith(
           fontWeight: FontWeight.w600,
           height: 1.4,
         );
@@ -257,7 +257,7 @@ class _BankBottomSheetState extends State<_BankBottomSheet> {
                     PayButton(
                       amount: widget.amount,
                       onPressed: () {
-                        if (_formKey.currentState?.validate() ?? false) {
+                        if (_formKey.currentState.validate() ?? false) {
                           widget.onTap(_khaltiMobileNumber!);
                         }
                       },
@@ -275,7 +275,7 @@ class _BankBottomSheetState extends State<_BankBottomSheet> {
 }
 
 class _CloseButton extends StatelessWidget {
-  const _CloseButton({Key? key}) : super(key: key);
+  const _CloseButton({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

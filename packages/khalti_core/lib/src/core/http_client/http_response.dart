@@ -17,21 +17,21 @@ class HttpResponse {
 
   /// Factory for [SuccessHttpResponse].
   factory HttpResponse.success({
-    required Object data,
-    required int statusCode,
+    @required Object data,
+    @required int statusCode,
   }) = SuccessHttpResponse._;
 
   /// Factory for [FailureHttpResponse].
   factory HttpResponse.failure({
-    required Object data,
-    required int statusCode,
+    @required Object data,
+    @required int statusCode,
   }) = FailureHttpResponse._;
 
   /// Factory for [ExceptionHttpResponse].
   factory HttpResponse.exception({
-    required String message,
-    required int code,
-    required StackTrace stackTrace,
+    @required String message,
+    @required int code,
+    @required StackTrace stackTrace,
     Object? detail,
     bool isSocketException,
   }) = ExceptionHttpResponse._;
@@ -40,8 +40,8 @@ class HttpResponse {
 /// The success response for [KhaltiClient].
 class SuccessHttpResponse extends HttpResponse {
   const SuccessHttpResponse._({
-    required Object data,
-    required int statusCode,
+    @required Object data,
+    @required int statusCode,
   }) : super._(data: data, statusCode: statusCode);
 
   @override
@@ -53,8 +53,8 @@ class SuccessHttpResponse extends HttpResponse {
 /// The failure response for [KhaltiClient].
 class FailureHttpResponse extends HttpResponse {
   const FailureHttpResponse._({
-    required Object data,
-    required int statusCode,
+    @required Object data,
+    @required int statusCode,
   }) : super._(data: data, statusCode: statusCode);
 
   @override
@@ -78,9 +78,9 @@ class ExceptionHttpResponse extends HttpResponse {
   final bool isSocketException;
 
   const ExceptionHttpResponse._({
-    required String message,
-    required this.code,
-    required this.stackTrace,
+    @required String message,
+    @required this.code,
+    @required this.stackTrace,
     this.detail,
     this.isSocketException = false,
   }) : super._(message: message, statusCode: code);

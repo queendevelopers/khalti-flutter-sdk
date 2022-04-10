@@ -8,9 +8,9 @@ import 'payment_config.dart';
 class PaymentConfigScope extends InheritedWidget {
   /// Creates [PaymentConfigScope] from the provided values.
   const PaymentConfigScope({
-    Key? key,
-    required this.config,
-    required Widget child,
+    Key key,
+    @required this.config,
+    @required Widget child,
   }) : super(key: key, child: child);
 
   /// The [PaymentConfig] to be scoped in the widget tree.
@@ -18,23 +18,23 @@ class PaymentConfigScope extends InheritedWidget {
 
   /// Returns the [PaymentConfig] instance scoped in the widget tree.
   static PaymentConfig of(BuildContext context) {
-    final PaymentConfigScope? configScope =
+    final PaymentConfigScope configScope =
         context.dependOnInheritedWidgetOfExactType();
 
     assert(
       configScope != null,
       'No PaymentConfigScope found in the widget tree.',
     );
-    return configScope!.config;
+    return configScope.config;
   }
 
   /// Returns the [PaymentConfig] instance scoped in the widget tree &
   /// returns null if not found.
-  static PaymentConfig? mayBeOf(BuildContext context) {
-    final PaymentConfigScope? configScope =
+  static PaymentConfig mayBeOf(BuildContext context) {
+    final PaymentConfigScope configScope =
         context.dependOnInheritedWidgetOfExactType();
 
-    return configScope?.config;
+    return configScope.config;
   }
 
   @override

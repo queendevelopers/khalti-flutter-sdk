@@ -42,7 +42,7 @@ class _KhaltiLocalizationsEn extends KhaltiLocalizations {
   }
 
   @override
-  String get fieldRequired => 'This field is required';
+  String get fieldRequired => 'This field is @required';
 
   @override
   String get pleaseSelectYourBank => 'Please select your Bank';

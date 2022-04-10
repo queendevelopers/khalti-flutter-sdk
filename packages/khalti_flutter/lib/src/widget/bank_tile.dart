@@ -7,10 +7,10 @@ import 'package:khalti_flutter/src/widget/image.dart';
 class KhaltiBankTile extends StatelessWidget {
   /// Creates [KhaltiBankTile] with the provided values.
   const KhaltiBankTile({
-    Key? key,
-    required this.logoUrl,
-    required this.name,
-    required this.onTap,
+    Key key,
+    @required this.logoUrl,
+    @required this.name,
+    @required this.onTap,
   }) : super(key: key);
 
   /// The bank's logo url.

@@ -6,10 +6,10 @@ import 'package:khalti_core/src/helper/model_helpers.dart';
 class BankModel {
   /// Default constructor for [BankModel].
   BankModel({
-    required this.idx,
-    required this.logo,
-    required this.name,
-    required this.shortName,
+    @required this.idx,
+    @required this.logo,
+    @required this.name,
+    @required this.shortName,
   });
 
   /// A unique bank identification string.
@@ -62,11 +62,11 @@ class BankModel {
 class BankListModel {
   /// Default constructor for [BankListModel].
   BankListModel({
-    required this.banks,
-    required this.currentPage,
-    required this.recordRange,
-    required this.totalPages,
-    required this.totalRecords,
+    @required this.banks,
+    @required this.currentPage,
+    @required this.recordRange,
+    @required this.totalPages,
+    @required this.totalRecords,
     this.next,
     this.previous,
   });

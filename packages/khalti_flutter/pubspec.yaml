@@ -7,18 +7,18 @@ issue_tracker: https://github.com/khalti/khalti-flutter-sdk/issues
 repository: https://github.com/khalti/khalti-flutter-sdk/tree/master/packages/khalti_flutter
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^1.0.3
-  intl: ^0.17.0
-  khalti: ^1.0.1
-  url_launcher: ^6.0.18
+  flutter_svg:
+  intl:
+  khalti:
+  url_launcher:
 
-dev_dependencies:
-  flutter_lints: ^1.0.4
+#dev_dependencies:
+#  flutter_lints: ^1.0.4
 
 flutter:
   assets:

@@ -6,7 +6,7 @@ import 'package:khalti_core/src/config/url.dart';
 /// The wrapper class to access Khalti Payment Gateway API.
 class KhaltiService {
   /// Default constructor for [KhaltiService] to initialize [KhaltiClient].
-  KhaltiService({required KhaltiClient client}) : _client = client;
+  KhaltiService({@required KhaltiClient client}) : _client = client;
 
   final String _baseUrl = 'https://khalti.com';
   final int _apiVersion = 2;
@@ -33,7 +33,7 @@ class KhaltiService {
   /// Fetches the list for available banks that supports [paymentType].
   ///
   /// See: https://docs.khalti.com/checkout/diy-ebanking/#1-get-bank-list
-  Future<BankListModel> getBanks({required PaymentType paymentType}) async {
+  Future<BankListModel> getBanks({@required PaymentType paymentType}) async {
     final params = {
       'page': '1',
       'page_size': '200',
@@ -61,7 +61,7 @@ class KhaltiService {
   ///
   /// See: https://docs.khalti.com/checkout/diy-wallet/#1-initiate-transaction
   Future<PaymentInitiationResponseModel> initiatePayment({
-    required PaymentInitiationRequestModel request,
+    @required PaymentInitiationRequestModel request,
   }) async {
     final url = _buildUrl(initiateTransaction);
     final logger = _Logger('POST', url);
@@ -80,7 +80,7 @@ class KhaltiService {
   ///
   /// See: https://docs.khalti.com/checkout/diy-wallet/#2-confirm-transaction
   Future<PaymentSuccessModel> confirmPayment({
-    required PaymentConfirmationRequestModel request,
+    @required PaymentConfirmationRequestModel request,
   }) async {
     final url = _buildUrl(confirmTransaction);
     final logger = _Logger('POST', url);
@@ -121,13 +121,13 @@ class KhaltiService {
   ///
   /// See: https://docs.khalti.com/checkout/diy-ebanking/#2-initiate-transaction
   String buildBankUrl({
-    required String bankId,
-    required String mobile,
-    required int amount,
-    required String productIdentity,
-    required String productName,
-    required PaymentType paymentType,
-    required String returnUrl,
+    @required String bankId,
+    @required String mobile,
+    @required int amount,
+    @required String productIdentity,
+    @required String productName,
+    @required PaymentType paymentType,
+    @required String returnUrl,
     String? productUrl,
     Map<String, Object>? additionalData,
   }) {
@@ -151,7 +151,7 @@ class KhaltiService {
 
   T _handleError<T>(
     HttpResponse response, {
-    required T Function(Map<String, dynamic>) converter,
+    @required T Function(Map<String, dynamic>) converter,
   }) {
     if (response is ExceptionHttpResponse || response is FailureHttpResponse) {
       throw response;
@@ -194,7 +194,7 @@ class _Logger {
 
   void _logHeading() => _log(url, name: method);
 
-  void _log(String message, {required String name}) {
+  void _log(String message, {@required String name}) {
     if (KhaltiService.enableDebugging) _debugPrint('[$name] $message');
   }
 

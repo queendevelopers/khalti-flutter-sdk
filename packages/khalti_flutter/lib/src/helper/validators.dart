@@ -12,7 +12,7 @@ class Validators {
   final BuildContext context;
 
   /// Checks for valid mobile number, which is 10 digit number starting with '9'.
-  String? mobile(String? value) {
+  String mobile(String value) {
     return _required(
       value,
       (value) {
@@ -26,7 +26,7 @@ class Validators {
   }
 
   /// Checks for valid Khalti MPIN, which is [value] at least of 4 characters.
-  String? pin(String? value) {
+  String pin(String value) {
     return _required(
       value,
       (value) {
@@ -40,7 +40,7 @@ class Validators {
   }
 
   /// Checks for valid payment code, which is [value] at least of 6 characters.
-  String? code(String? value) {
+  String code(String value) {
     return _required(
       value,
       (value) {
@@ -53,16 +53,16 @@ class Validators {
     );
   }
 
-  String? _required(
-    String? value,
-    String? Function(String value) onValue,
+  String _required(
+    String value,
+    String Function(String value) onValue,
   ) {
     if (value == null || value.isEmpty) return context.loc.fieldRequired;
 
     return onValue(value);
   }
 
-  bool _isValid(String? text, String? regex) {
+  bool _isValid(String text, String regex) {
     if (text == null || regex == null) return false;
     final regExp = RegExp(regex);
     return regExp.hasMatch(text);

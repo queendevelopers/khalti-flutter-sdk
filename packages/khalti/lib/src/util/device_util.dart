@@ -7,9 +7,9 @@ import 'package:khalti_core/khalti_core.dart';
 
 /// A utility class to extract device related information.
 class DeviceUtil {
-  late AndroidDeviceInfo _androidDeviceInfo;
-  late IosDeviceInfo _iosDeviceInfo;
-  late WebBrowserInfo _webBrowserInfo;
+  AndroidDeviceInfo _androidDeviceInfo;
+  IosDeviceInfo _iosDeviceInfo;
+  WebBrowserInfo _webBrowserInfo;
 
   /// Initializes the underlying [device_info](https://pub.dev/packages/device_info) plugin.
   ///

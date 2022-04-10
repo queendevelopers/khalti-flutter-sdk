@@ -13,14 +13,14 @@ import 'package:khalti_flutter/src/widget/khalti_scope.dart';
 class KhaltiButton extends StatelessWidget {
   /// Creates [KhaltiButton] with the provided properties.
   const KhaltiButton({
-    Key? key,
-    required this.config,
-    required this.onSuccess,
-    required this.onFailure,
+    Key key,
+    @required this.config,
+    @required this.onSuccess,
+    @required this.onFailure,
     this.onCancel,
     this.preferences = PaymentPreference.values,
     this.label,
-    ButtonStyle? style,
+    ButtonStyle style,
   })  : _style = style,
         super(key: key);
 
@@ -34,7 +34,7 @@ class KhaltiButton extends StatelessWidget {
   final ValueChanged<PaymentFailureModel> onFailure;
 
   /// Called when user manually cancels the payment without performing any action.
-  final VoidCallback? onCancel;
+  final VoidCallback onCancel;
 
   /// The [PaymentPreference]s.
   ///
@@ -44,57 +44,57 @@ class KhaltiButton extends StatelessWidget {
   /// The button [label].
   ///
   /// Default is 'PAY'.
-  final String? label;
-  final ButtonStyle? _style;
+  final String label;
+  final ButtonStyle _style;
 
   /// Creates [KhaltiButton] which launches KPG interface
   /// with only wallet payment option.
   factory KhaltiButton.wallet({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) = _WalletButton;
 
   /// Creates [KhaltiButton] which launches KPG interface
   /// with only e-banking payment option.
   factory KhaltiButton.eBanking({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) = _EBankingButton;
 
   /// Creates [KhaltiButton] which launches KPG interface
   /// with only mobile banking payment option.
   factory KhaltiButton.mBanking({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) = _MobileBankingButton;
 
   /// Creates [KhaltiButton] which launches KPG interface
   /// with only SCT card payment option.
   factory KhaltiButton.sct({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) = _SCTButton;
 
   /// Creates [KhaltiButton] which launches KPG interface
   /// with only Connect IPS payment option.
   factory KhaltiButton.connectIPS({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) = _ConnectIPSButton;
 
   @override
@@ -124,11 +124,11 @@ class KhaltiButton extends StatelessWidget {
 
 class _WalletButton extends KhaltiButton {
   _WalletButton({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) : super(
           key: key,
           config: config,
@@ -151,11 +151,11 @@ class _WalletButton extends KhaltiButton {
 
 class _EBankingButton extends KhaltiButton {
   _EBankingButton({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) : super(
           key: key,
           config: config,
@@ -178,11 +178,11 @@ class _EBankingButton extends KhaltiButton {
 
 class _MobileBankingButton extends KhaltiButton {
   _MobileBankingButton({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) : super(
           key: key,
           config: config,
@@ -205,11 +205,11 @@ class _MobileBankingButton extends KhaltiButton {
 
 class _SCTButton extends KhaltiButton {
   _SCTButton({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) : super(
           key: key,
           config: config,
@@ -232,11 +232,11 @@ class _SCTButton extends KhaltiButton {
 
 class _ConnectIPSButton extends KhaltiButton {
   _ConnectIPSButton({
-    Key? key,
-    required PaymentConfig config,
-    required ValueChanged<PaymentSuccessModel> onSuccess,
-    required ValueChanged<PaymentFailureModel> onFailure,
-    VoidCallback? onCancel,
+    Key key,
+    @required PaymentConfig config,
+    @required ValueChanged<PaymentSuccessModel> onSuccess,
+    @required ValueChanged<PaymentFailureModel> onFailure,
+    VoidCallback onCancel,
   }) : super(
           key: key,
           config: config,
@@ -258,7 +258,7 @@ class _ConnectIPSButton extends KhaltiButton {
 }
 
 class _ButtonIcon extends StatelessWidget {
-  const _ButtonIcon({Key? key, required this.assetName}) : super(key: key);
+  const _ButtonIcon({Key key, @required this.assetName}) : super(key: key);
 
   final String assetName;
 

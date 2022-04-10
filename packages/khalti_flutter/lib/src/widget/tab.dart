@@ -8,8 +8,8 @@ import 'image.dart';
 class KhaltiTab extends StatelessWidget implements PreferredSizeWidget {
   /// Creates [KhaltiTab] with the provided properties.
   const KhaltiTab({
-    Key? key,
-    required this.label,
+    Key key,
+    @required this.label,
     this.iconAsset,
     this.horizontalPadding = 0,
   }) : super(key: key);
@@ -18,7 +18,7 @@ class KhaltiTab extends StatelessWidget implements PreferredSizeWidget {
   final String label;
 
   /// The icon asset name.
-  final String? iconAsset;
+  final String iconAsset;
 
   /// The horizontal padding for tab.
   final double horizontalPadding;
@@ -29,7 +29,7 @@ class KhaltiTab extends StatelessWidget implements PreferredSizeWidget {
       iconMargin: const EdgeInsets.only(bottom: 8),
       icon: iconAsset == null
           ? null
-          : KhaltiImage.asset(asset: iconAsset!, inheritIconTheme: true),
+          : KhaltiImage.asset(asset: iconAsset, inheritIconTheme: true),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         child: Text(label.toUpperCase()),

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class ResponsiveBox extends StatelessWidget {
   /// Creates [ResponsiveBox] with the provided properties.
   const ResponsiveBox({
-    Key? key,
-    required this.child,
+    Key key,
+    @required this.child,
     this.alignment = Alignment.center,
   }) : super(key: key);
 

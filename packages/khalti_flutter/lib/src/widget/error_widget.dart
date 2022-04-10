@@ -9,8 +9,8 @@ import 'package:khalti_flutter/src/widget/image.dart';
 class KhaltiErrorWidget extends StatelessWidget {
   /// Create [KhaltiErrorWidget] with the provided values.
   const KhaltiErrorWidget({
-    Key? key,
-    required this.error,
+    Key key,
+    @required this.error,
     this.title,
     this.subtitle,
   }) : super(key: key);
@@ -19,16 +19,16 @@ class KhaltiErrorWidget extends StatelessWidget {
   final Object error;
 
   /// The error [title].
-  final String? title;
+  final String title;
 
   /// The error [subtitle].
-  final String? subtitle;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
     final errorInfo = ErrorInfo.from(context, error);
 
-    final titleStyle = Theme.of(context).textTheme.subtitle1?.copyWith(
+    final titleStyle = Theme.of(context).textTheme.subtitle1.copyWith(
           color: Theme.of(context).colorScheme.onPrimary,
         );
 
@@ -43,7 +43,7 @@ class KhaltiErrorWidget extends StatelessWidget {
           const SizedBox(height: 16),
           if (subtitle != null || errorInfo.secondary != null)
             Text(
-              subtitle ?? errorInfo.secondary!,
+              subtitle ?? errorInfo.secondary,
               style: TextStyle(color: KhaltiColor.of(context).surface.shade100),
             ),
         ],

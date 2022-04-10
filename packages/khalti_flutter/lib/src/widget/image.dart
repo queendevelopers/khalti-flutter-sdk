@@ -8,7 +8,7 @@ import 'package:khalti_flutter/src/widget/color.dart';
 abstract class KhaltiImage extends StatelessWidget {
   /// Creates [KhaltiImage].
   const KhaltiImage({
-    Key? key,
+    Key key,
     this.inheritIconTheme = false,
   }) : super(key: key);
 
@@ -17,35 +17,35 @@ abstract class KhaltiImage extends StatelessWidget {
 
   /// Creates [KhaltiImage] from SVG assets.
   const factory KhaltiImage.asset({
-    Key? key,
-    required String asset,
-    double? height,
+    Key key,
+    @required String asset,
+    double height,
     bool inheritIconTheme,
   }) = _AssetSVGImage;
 
   /// Creates [KhaltiImage] from network image urls.
   const factory KhaltiImage.network({
-    Key? key,
-    required String url,
-    double? height,
+    Key key,
+    @required String url,
+    double height,
     bool inheritIconTheme,
   }) = _NetworkImage;
 
-  Color? _imageColor(BuildContext context) {
+  Color _imageColor(BuildContext context) {
     return inheritIconTheme ? IconTheme.of(context).color : null;
   }
 }
 
 class _AssetSVGImage extends KhaltiImage {
   const _AssetSVGImage({
-    Key? key,
-    required this.asset,
+    Key key,
+    @required this.asset,
     this.height,
     bool inheritIconTheme = false,
   }) : super(key: key, inheritIconTheme: inheritIconTheme);
 
   final String asset;
-  final double? height;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -60,14 +60,14 @@ class _AssetSVGImage extends KhaltiImage {
 
 class _NetworkImage extends KhaltiImage {
   const _NetworkImage({
-    Key? key,
-    required this.url,
+    Key key,
+    @required this.url,
     this.height,
     bool inheritIconTheme = false,
   }) : super(key: key, inheritIconTheme: inheritIconTheme);
 
   final String url;
-  final double? height;
+  final double height;
 
   @override
   Widget build(BuildContext context) {

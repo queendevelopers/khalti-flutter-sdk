@@ -18,7 +18,7 @@ import 'package:khalti_flutter/src/widget/responsive_box.dart';
 /// The page for making payments using Khalti wallet balance.
 class WalletPaymentPage extends StatefulWidget {
   /// Creates [WalletPaymentPage].
-  const WalletPaymentPage({Key? key}) : super(key: key);
+  const WalletPaymentPage({Key key}) : super(key: key);
 
   @override
   State<WalletPaymentPage> createState() => _WalletPaymentPageState();
@@ -28,9 +28,9 @@ class _WalletPaymentPageState extends State<WalletPaymentPage>
     with AutomaticKeepAliveClientMixin {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
-  late final ValueNotifier<int> _remainingAttempts;
+  ValueNotifier<int> _remainingAttempts;
 
-  String? _mobile, _mPin;
+  String _mobile, _mPin;
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _WalletPaymentPageState extends State<WalletPaymentPage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    final subtitle1 = Theme.of(context).textTheme.subtitle1?.copyWith(
+    final subtitle1 = Theme.of(context).textTheme.subtitle1.copyWith(
           color: KhaltiColor.of(context).surface.shade300,
           fontWeight: FontWeight.w300,
         );
@@ -72,7 +72,7 @@ class _WalletPaymentPageState extends State<WalletPaymentPage>
                   return AnimatedSize(
                     duration: const Duration(milliseconds: 300),
                     child: remainingAttempts.isNegative
-                        ? Container(height: 1)
+                         Container(height: 1)
                         : Padding(
                             padding: const EdgeInsets.only(bottom: 32),
                             child: Text(
@@ -119,7 +119,7 @@ class _WalletPaymentPageState extends State<WalletPaymentPage>
   bool get wantKeepAlive => true;
 
   Future<void> _initiatePayment(PaymentConfig config) async {
-    if (_formKey.currentState?.validate() ?? false) {
+    if (_formKey.currentState.validate() ?? false) {
       showProgressDialog(
         context,
         message: context.loc.initiatingPayment,
@@ -127,8 +127,8 @@ class _WalletPaymentPageState extends State<WalletPaymentPage>
       try {
         final response = await Khalti.service.initiatePayment(
           request: PaymentInitiationRequestModel(
-            mobile: _mobile!,
-            transactionPin: _mPin!,
+            mobile: _mobile,
+            transactionPin: _mPin,
             amount: config.amount,
             productIdentity: config.productIdentity,
             productName: config.productName,
@@ -152,8 +152,8 @@ class _WalletPaymentPageState extends State<WalletPaymentPage>
                   child: Theme(
                     data: Theme.of(context),
                     child: ConfirmationPage(
-                      mobileNo: _mobile!,
-                      mPin: _mPin!,
+                      mobileNo: _mobile,
+                      mPin: _mPin,
                       token: response.token,
                     ),
                   ),
@@ -185,7 +185,7 @@ class _WalletPaymentPageState extends State<WalletPaymentPage>
 }
 
 class _ResetMPINSection extends StatelessWidget {
-  const _ResetMPINSection({Key? key}) : super(key: key);
+  const _ResetMPINSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +195,7 @@ class _ResetMPINSection extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           minimumSize: const Size(144, 40),
-          textStyle: buttonStyle?.copyWith(fontSize: 14),
+          textStyle: buttonStyle.copyWith(fontSize: 14),
         ),
         child: Text(context.loc.resetKhaltiMPIN.toUpperCase()),
         onPressed: () async {
@@ -216,8 +216,8 @@ class _ResetMPINSection extends StatelessWidget {
 
 class _ResetMPINDialogBody extends StatelessWidget {
   const _ResetMPINDialogBody({
-    Key? key,
-    required this.parentContext,
+    Key key,
+    @required this.parentContext,
   }) : super(key: key);
 
   final BuildContext parentContext;

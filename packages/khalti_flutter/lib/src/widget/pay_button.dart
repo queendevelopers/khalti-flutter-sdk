@@ -8,9 +8,9 @@ import 'package:khalti_flutter/src/widget/color.dart';
 class PayButton extends StatelessWidget {
   /// Creates [PayButton] with the provided properties.
   const PayButton({
-    Key? key,
-    required this.amount,
-    required this.onPressed,
+    Key key,
+    @required this.amount,
+    @required this.onPressed,
   }) : super(key: key);
 
   /// The [amount] in paisa.
@@ -36,13 +36,13 @@ class PayButton extends StatelessWidget {
 }
 
 class _AmountWidget extends StatelessWidget {
-  const _AmountWidget({Key? key, required this.amount}) : super(key: key);
+  const _AmountWidget({Key key, @required this.amount}) : super(key: key);
 
   final int amount;
 
   @override
   Widget build(BuildContext context) {
-    final headline6 = Theme.of(context).textTheme.headline6?.copyWith(
+    final headline6 = Theme.of(context).textTheme.headline6.copyWith(
           fontWeight: FontWeight.w600,
         );
 
@@ -54,7 +54,7 @@ class _AmountWidget extends StatelessWidget {
           context.loc.amount,
           style: Theme.of(context)
               .textTheme
-              .caption!
+              .caption
               .copyWith(color: KhaltiColor.of(context).surface.shade50),
         ),
         const SizedBox(height: 4),

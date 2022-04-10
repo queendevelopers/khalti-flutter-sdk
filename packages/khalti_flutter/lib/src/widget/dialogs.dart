@@ -13,7 +13,7 @@ import 'package:khalti_flutter/src/widget/responsive_box.dart';
 /// Shows progress dialog with the provided [message].
 Future<void> showProgressDialog(
   BuildContext context, {
-  required String message,
+  @required String message,
 }) {
   return showDialog(
     context: context,
@@ -22,7 +22,7 @@ Future<void> showProgressDialog(
       return DefaultTextStyle(
         style: Theme.of(context)
             .textTheme
-            .bodyText2!
+            .bodyText2
             .copyWith(color: KhaltiColor.of(context).surface.shade400),
         child: ResponsiveBox(
           child: Dialog(
@@ -53,8 +53,8 @@ Future<void> showProgressDialog(
 /// Shows error dialog for the provided [error] object.
 Future<void> showErrorDialog(
   BuildContext context, {
-  required Object error,
-  required VoidCallback onPressed,
+  @required Object error,
+  @required VoidCallback onPressed,
 }) {
   return showDialog(
     context: context,
@@ -68,10 +68,10 @@ Future<void> showErrorDialog(
         subtitle: errorInfo.secondary == null
             ? null
             : _ErrorBodyWidget(
-                message: errorInfo.secondary!,
+                message: errorInfo.secondary,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2!
+                    .bodyText2
                     .copyWith(color: KhaltiColor.of(context).surface.shade400),
               ),
         onPressed: onPressed,
@@ -83,9 +83,9 @@ Future<void> showErrorDialog(
 /// Shows success dialog with the provided [title] and [subtitle].
 Future<void> showSuccessDialog(
   BuildContext context, {
-  required String title,
-  required String subtitle,
-  required VoidCallback onPressed,
+  @required String title,
+  @required String subtitle,
+  @required VoidCallback onPressed,
 }) {
   return showDialog(
     context: context,
@@ -97,7 +97,7 @@ Future<void> showSuccessDialog(
         titleText: title,
         subtitle: Text(
           subtitle,
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(
+          style: Theme.of(context).textTheme.bodyText2.copyWith(
                 color: KhaltiColor.of(context).surface.shade400,
                 height: 1.5,
               ),
@@ -111,8 +111,8 @@ Future<void> showSuccessDialog(
 /// Shows progress dialog with the provided [title] and [body].
 Future<void> showInfoDialog(
   BuildContext context, {
-  required String title,
-  required Widget body,
+  @required String title,
+  @required Widget body,
 }) {
   return showDialog(
     context: context,
@@ -129,23 +129,23 @@ Future<void> showInfoDialog(
 
 class _Dialog extends StatelessWidget {
   const _Dialog({
-    Key? key,
-    required this.parentContext,
-    required this.assetName,
-    required this.titleText,
-    required this.subtitle,
+    Key key,
+    @required this.parentContext,
+    @required this.assetName,
+    @required this.titleText,
+    @required this.subtitle,
     this.onPressed,
   }) : super(key: key);
 
   final BuildContext parentContext;
   final String assetName;
   final String titleText;
-  final Widget? subtitle;
-  final VoidCallback? onPressed;
+  final Widget subtitle;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(parentContext).textTheme.bodyText2!.copyWith(
+    final textStyle = Theme.of(parentContext).textTheme.bodyText2.copyWith(
           color: KhaltiColor.of(parentContext).surface.shade400,
           height: 1.5,
         );
@@ -183,7 +183,7 @@ class _Dialog extends StatelessWidget {
                       if (subtitle != null)
                         DefaultTextStyle(
                           style: textStyle,
-                          child: subtitle!,
+                          child: subtitle,
                         ),
                     ],
                   ),
@@ -217,9 +217,9 @@ class _Dialog extends StatelessWidget {
 
 class _ErrorBodyWidget extends StatelessWidget {
   const _ErrorBodyWidget({
-    Key? key,
-    required this.message,
-    required this.style,
+    Key key,
+    @required this.message,
+    @required this.style,
   }) : super(key: key);
 
   final String message;
@@ -231,7 +231,7 @@ class _ErrorBodyWidget extends StatelessWidget {
 
     if (regex.hasMatch(message)) {
       final match = regex.firstMatch(message);
-      if (match!.groupCount == 4) {
+      if (match.groupCount == 4) {
         final leadingText = match.group(1);
         final trailingText = match.group(4);
         final link = match.group(2);

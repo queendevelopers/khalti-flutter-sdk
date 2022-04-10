@@ -6,10 +6,10 @@ import 'package:khalti_core/src/helper/model_helpers.dart';
 
 class _PayloadModel extends KhaltiRequestModel {
   _PayloadModel({
-    required this.amount,
-    required this.mobile,
-    required this.productIdentity,
-    required this.productName,
+    @required this.amount,
+    @required this.mobile,
+    @required this.productIdentity,
+    @required this.productName,
     this.productUrl,
     this.additionalData,
   });
@@ -43,11 +43,11 @@ class _PayloadModel extends KhaltiRequestModel {
 class PaymentInitiationRequestModel extends _PayloadModel {
   /// Default constructor for [PaymentInitiationRequestModel].
   PaymentInitiationRequestModel({
-    required int amount,
-    required String mobile,
-    required String productIdentity,
-    required String productName,
-    required this.transactionPin,
+    @required int amount,
+    @required String mobile,
+    @required String productIdentity,
+    @required String productName,
+    @required this.transactionPin,
     String? productUrl,
     Map<String, Object>? additionalData,
   }) : super(
@@ -80,12 +80,12 @@ class PaymentInitiationRequestModel extends _PayloadModel {
 class PaymentInitiationResponseModel {
   /// Default constructor for [PaymentInitiationResponseModel].
   PaymentInitiationResponseModel({
-    required this.token,
-    required this.pinCreated,
-    required this.pinCreatedMessage,
+    @required this.token,
+    @required this.pinCreated,
+    @required this.pinCreatedMessage,
   });
 
-  /// The [token] required for confirming transaction using [PaymentConfirmationRequestModel].
+  /// The [token] @required for confirming transaction using [PaymentConfirmationRequestModel].
   final String token;
 
   /// Whether or not a new PIN was created.
@@ -113,9 +113,9 @@ class PaymentInitiationResponseModel {
 class PaymentConfirmationRequestModel extends KhaltiRequestModel {
   /// Default constructor for [PaymentConfirmationRequestModel].
   PaymentConfirmationRequestModel({
-    required this.confirmationCode,
-    required this.token,
-    required this.transactionPin,
+    @required this.confirmationCode,
+    @required this.token,
+    @required this.transactionPin,
   });
 
   /// The [confirmationCode] received as SMS in registered mobile number or email address.
@@ -149,14 +149,14 @@ class PaymentConfirmationRequestModel extends KhaltiRequestModel {
 class PaymentSuccessModel {
   /// Default constructor for [PaymentSuccessModel].
   PaymentSuccessModel({
-    required this.idx,
-    required this.amount,
-    required this.mobile,
-    required this.productIdentity,
-    required this.productName,
-    required this.token,
-    required this.productUrl,
-    required this.additionalData,
+    @required this.idx,
+    @required this.amount,
+    @required this.mobile,
+    @required this.productIdentity,
+    @required this.productName,
+    @required this.token,
+    @required this.productUrl,
+    @required this.additionalData,
   });
 
   /// A unique identification string representing the transaction.
@@ -216,8 +216,8 @@ class PaymentSuccessModel {
 class PaymentFailureModel {
   /// Default constructor for [PaymentFailureModel].
   PaymentFailureModel({
-    required this.message,
-    required this.data,
+    @required this.message,
+    @required this.data,
   });
 
   /// The failure [message].
