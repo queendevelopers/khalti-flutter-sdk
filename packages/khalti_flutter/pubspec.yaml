@@ -16,11 +16,10 @@ dependencies:
   intl:
   url_launcher:
   khalti:
-    path: ../khalti
-#    git:
-#      url: https://github.com/queendevelopers/khalti-flutter-sdk.git
-#      branch: unsound-null-safety
-#      path: packages/khalti
+    git:
+      url: https://github.com/queendevelopers/khalti-flutter-sdk.git
+      branch: unsound-null-safety-test
+      path: packages/khalti
 #dev_dependencies:
 #  flutter_lints: ^1.0.4
 
