@@ -17,6 +17,6 @@ dependencies:
   khalti_core:
     git:
       url: https://github.com/queendevelopers/khalti-flutter-sdk.git
-      ref: unsound-null-safety-test
+      ref: unsound-null-safety
       path: packages/khalti_core
   package_info_plus:
